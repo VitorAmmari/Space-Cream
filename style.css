@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --fs-main: 2.0rem;
+  --bg-body: #8E9AAF;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Staatliches', cursive;
+  background: var(--bg-body);
+}
+
+.page {
+  margin: auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header::before {
+  content: "";
+  width: 100%;
+  height: 27.9rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #8E9AAF;
+  z-index: -2;
+}
+
+header img {
+  width: 18rem;
+  height: auto;
+  margin: 3.2rem 0;
+}
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 4.0rem;
+  line-height: 3.4rem;
+  letter-spacing: 0.05px;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  width: 100%;
+  height: 4.9rem;
+  margin-bottom: 2.9rem;
+  background: #CBC0D3
+}
+
+header p {
+  font-family: 'Palanquin', sans-serif;
+  font-size: var(--fs-main);
+  line-height: 2.5rem;
+  text-align: center;
+  color: #23053A;
+  margin-bottom: 2.0rem;
+  padding: 3.2rem 3.2rem 0;
+}
+
+p span {
+  font-weight: 800;
+  color: white;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+main {
+  display: grid;
+  gap: 3.6rem;
+  padding: 3.2rem 3.2rem 5.0rem;
+}
+
+.card {
+  position: relative;
+}
+
+.card img {
+  object-fit: cover;
+  border-radius: 20px;
+  cursor: pointer;
+  animation: downtop 700ms;
+}
+
+.card img:hover {
+  transform: scale(1.1);
+  opacity: 0.4;
+  transition: 200ms ease-in;
+}
+
+.card h2 {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+
+  font-size: 2.0rem;
+  line-height: 3.4rem;
+  font-weight: 400;
+  color:#4A4E69;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+
+  background: #FEEAFA;
+  border-radius: 2.0rem;
+  padding: 0 2.4rem;
+  width: fit-content;
+
+  cursor: default;
+
+  animation: topdown 700ms 350ms backwards;
+}
+
+main div:nth-child(3) {
+  display: none;
+}
+
+main div:nth-child(4) {
+  display: none;
+}
+
+footer {
+  display: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4rem;
+  line-height: 2.8rem;
+  color: black;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leftright {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+
+  1000% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0.5turn);
+  }
+
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@media (min-width: 600px) {
+  
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .card img {
+    height: 40rem;
+  }
+
+}
+
+@media (min-width: 930px) {
+  body { 
+    background: white;
+  }
+  
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 100vh;
+  }
+
+  header {
+    background: #8E9AAF;
+    width: 40rem;
+    height: 100%;
+  }
+
+  header img {
+    animation: rotation 1s;
+  }
+
+  header h1 {
+    animation: leftright 1s;
+  }
+
+  header p {
+    width: 35rem;
+    margin-top: 4rem;
+  }
+
+  header::before {
+    display: none;
+  }
+
+  main {
+    height: 97vh;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    "A B C"
+    "D B F"
+    "D E F";
+  }
+
+  main div:nth-child(1) {
+    grid-area: A;
+
+    animation: topdown 1s;
+  }
+
+  main div:nth-child(2) {
+    grid-area: B;
+
+    animation: topdown 1s;
+  }
+
+  main div:nth-child(3) {
+    grid-area: C;
+
+    display: flex;
+    animation: topdown 1s;
+  }
+
+  main div:nth-child(4) {
+    display: flex;
+    grid-area: D;
+
+    animation: downtop 1s;
+  }
+
+  main div:nth-child(5) {
+    grid-area: E;
+
+    animation: downtop 1s;
+  }
+
+  main div:nth-child(6) {
+    grid-area: F;
+
+    animation: downtop 1s;
+  }
+
+  .card img {
+    max-height: 30rem;
+    height: auto;
+  }
+
+  .card h2 {
+    display: none;
+  }
+
+  footer {
+    display: block;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+  }
+}
